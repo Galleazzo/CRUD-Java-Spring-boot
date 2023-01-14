@@ -25,17 +25,11 @@ public class UsuarioControler {
 	@Autowired
 	private UsuarioRepo repo;
 	
-	
-	
 	@GetMapping(path="/form")
     public String nnew() {
         return "NovoUser";
     }
 
-	
-	
-	
-	
 	/* Metodo para salvar novo USUARIO*/
 	@PostMapping(path = "/save")
 	public String novo( Usuario usuario) {
@@ -43,9 +37,6 @@ public class UsuarioControler {
 		System.out.println("Usuario salvo!!!!!!!!!!!!!!");
 		return "redirect:/Usuario/ListaDeUsuarios";
 	}
-	
-	
-	
 	
 	/* Metodo para listar todos USUARIO*/
 	@GetMapping("/ListaDeUsuarios")
@@ -55,10 +46,7 @@ public class UsuarioControler {
 		model.addAttribute("Lista", lista);
 		return "ListaDeUsuarios";
 	}
-	
-	
-
-	
+		
 	/* Metodo para deletar USUARIO*/
 	@GetMapping(path = "/deletar/{id}")
 	public String deletarPorId(@PathVariable Integer id) {
@@ -67,8 +55,6 @@ public class UsuarioControler {
 		repo.delete(user);
 		return "redirect:/Usuario/ListaDeUsuarios";
 	}
-	
-	
 	
 	/* Metodo para chamar edição de USUARIO*/
 	@GetMapping(path = "/edit/{id}")
@@ -79,9 +65,7 @@ public class UsuarioControler {
 		return "EditarUser";
 
 	}
-	
-	
-	
+		
 	@PostMapping(path = "/saveEdit/{id}")
 	public String saveEdit(@PathVariable Integer id, @Validated Usuario user ) {
 		repo.save(user);
